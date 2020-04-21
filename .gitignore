@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.key
+main_cache/*
+main_files/*
+stan_programs_answers
