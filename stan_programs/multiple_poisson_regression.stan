@@ -1,3 +1,10 @@
+functions {  
+  // Alternative to poisson_log_rng() that avoids potential numerical problems during warmup
+  int poisson_log_safe_rng(real eta) {
+    real eta2 = (eta < 20.79) ? eta : 20.79;
+    return poisson_log_rng(eta2);
+  }
+}
 data {
   int<lower=1> N;
   int<lower=0> complaints[N];
@@ -25,7 +32,6 @@ generated quantities {
   int y_rep[N];
   for (n in 1:N) {
     real eta_n = alpha + beta * traps[n] + beta_super * live_in_super[n] + log_sq_foot[n];
-    if (eta_n >= 20.79) eta_n = 20.79;
-    y_rep[n] = poisson_log_rng(eta_n);
+    y_rep[n] = poisson_log_safe_rng(eta_n);
   }
 }

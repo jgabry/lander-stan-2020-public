@@ -136,7 +136,7 @@ ggplot(pest_data, aes(x = complaints)) +
 ```
 
 ```{r data-plot-2}
-ggplot(pest_data, aes(x = traps, y = complaints, color = live_in_super == TRUE)) + 
+ggplot(pest_data, aes(x = traps, y = complaints)) + 
   geom_jitter()
 ```
 
