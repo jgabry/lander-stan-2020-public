@@ -115,7 +115,7 @@ We have access to the following fields:
 * `building_id`: The unique building identifier
 * `traps`: The number of traps used per month per building
 * `date`: The date at which the number of complaints are recorded
-* `live_in_super`: An indicator for whether the building as a live-in super
+* `live_in_super`: An indicator for whether the building has a live-in super
 * `age_of_building`: The age of the building
 * `total_sq_foot`: The total square footage of the building
 * `average_tenant_age`: The average age of the tenants per building
@@ -250,7 +250,6 @@ prior_preds <- t(replicate(1000, expr = {
     beta_sd = 1
   )
 }))
-
 dim(prior_preds)
 ```
 
@@ -378,6 +377,7 @@ model fits.
 # see http://mc-stan.org/rstan/articles/stanfit_objects.html for various ways
 # of extracting contents from stanfit objects
 y_rep <- as.matrix(fit_simple, pars = "y_rep")
+dim(y_rep) # number of posterior draws x number of data points
 ```
 
 ```{r marginal_PPC}
@@ -600,8 +600,7 @@ comp_multi_NB <- stan_model('stan_programs/multiple_NB_regression.stan')
 ### Fit to data and check the fit
 
 ```{r fit_multi_NB}
-fit_multi_NB <- sampling(comp_multi_NB, data = standata_simple, 
-                         refresh = 500, cores = 4)
+fit_multi_NB <- sampling(comp_multi_NB, data = standata_simple)
 
 # to demonstrate extracting as a list instead of using as.matrix
 samps_NB <- rstan::extract(fit_multi_NB) 

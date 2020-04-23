@@ -18,9 +18,11 @@ parameters {
   
   // declare coefficient on live_in_super (beta_super)
 }
+transformed parameters {
+  // create variable eta for the linear predictor
+
+}
 model {
-  // create temporary variable eta for the linear predictor
-  vector[N] eta = ;
   complaints ~ poisson_log(eta);
   
   // priors
@@ -31,7 +33,6 @@ model {
 generated quantities {
   int y_rep[N];
   for (n in 1:N) {
-    real eta_n = alpha + beta * traps[n] + beta_super * live_in_super[n] + log_sq_foot[n];
-    y_rep[n] = poisson_log_safe_rng(eta_n);
+    y_rep[n] = poisson_log_safe_rng(eta[n]);
   }
 }
