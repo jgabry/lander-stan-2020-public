@@ -18,7 +18,7 @@ data {
   
   int<lower=0> J; //Number of buildings
   int<lower=0> K; //Number of building level predictors
-  int<lower=0, upper=J> building_idx[N];
+  int<lower=1, upper=J> building_idx[N];
   matrix[J,K] building_data;
 }
 parameters {
