@@ -342,8 +342,10 @@ print(fit_simple, pars = c('alpha','beta'))
 We can also plot the posterior distributions: 
 
 ```{r mcmc_hist}
-# https://mc-stan.org/bayesplot/reference/MCMC-distributions
+# extract posterior samples of alpha and beta
 draws <- as.matrix(fit_simple, pars = c('alpha','beta'))
+
+# https://mc-stan.org/bayesplot/reference/MCMC-distributions
 mcmc_hist(draws) # marginal posteriors of alpha and beta
 mcmc_scatter(draws, alpha = 0.2, size = 1) # posterior of (alpha,beta)
 ```
@@ -442,7 +444,7 @@ of traps:
 ppc_intervals(y = standata_simple$complaints, yrep = y_rep,
               # jitter number of traps since multiple observations at some values
               x = standata_simple$traps + rnorm(standata_simple$N, 0, 0.2)) +  
-  labs(x = "Number of traps", y = "Number of complaints")
+  labs(x = "Number of traps", y = "Predicted number of complaints")
 ```
 
 
@@ -504,21 +506,17 @@ comp_multi <- stan_model('stan_programs/multiple_poisson_regression.stan')
 ### Fit the Poisson multiple regression
 
 ```{r fit_multi}
-fit_multi <- sampling(comp_multi, data = standata_simple, 
+fit_multi <- sampling(comp_multi, data = standata_simple,
                       refresh = 0) # turn off printed progress updates
 print(fit_multi, pars = c("alpha", "beta", "beta_super"))
+
+posterior_draws <- as.matrix(fit_multi, pars = c("alpha", "beta", "beta_super"))
 ```
 
 
 ```{r ppc_dens_overlay-random-subset}
 y_rep <- as.matrix(fit_multi, pars = "y_rep")
 ppc_dens_overlay(standata_simple$complaints, y_rep[1:200,])
-
-# in this case we have very high effective sample sizes, but if there is
-# nontrivial autocorrelation then it's better to take a random sample of the draws, 
-# for example:
-ids <- sample(nrow(y_rep), size = 200)
-ppc_dens_overlay(standata_simple$complaints, y_rep[ids, ])
 ```
 
 This again looks like we haven't captured the smaller counts very well, nor
