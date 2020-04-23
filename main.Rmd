@@ -433,7 +433,8 @@ rootogram):
 
 ```{r ppc_bars}
 # https://mc-stan.org/bayesplot/reference/PPC-discrete#plot-descriptions
-ppc_bars(standata_simple$complaints, yrep = y_rep)
+ppc_bars(standata_simple$complaints, yrep = y_rep) + 
+  labs(x = "Complaints")
 ```
 
 
@@ -603,6 +604,10 @@ fit_multi_NB <- sampling(comp_multi_NB, data = standata_simple)
 # to demonstrate extracting as a list instead of using as.matrix
 samps_NB <- rstan::extract(fit_multi_NB) 
 str(samps_NB)
+```
+
+```{r phi-posterior}
+mcmc_hist(as.matrix(fit_multi_NB, pars = c("inv_phi", "phi")))
 ```
 
 Let's look at our predictions vs. the data.
