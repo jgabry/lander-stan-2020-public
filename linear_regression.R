@@ -13,10 +13,11 @@ model = stan_model("your_model.stan")
 # Write a model in 'your_model.stan'. Use the Rstudio stan template in
 #  File -> New File -> Stan File
 #
-# Write the likelihood corresponding to:
-#  complaints ~ N(slope * traps + intercept, sigma)
+# Pretend complaints is normally distributed and write a likelihood for it
+# assuming a mean of intercept + slope * traps 
+# and an SD of sigma.
 #
-# Make up a prior (if you want one)!
+# Make up priors (if you want one)!
 #
 # Remember you'll need:
 #  1. A data block for your input
