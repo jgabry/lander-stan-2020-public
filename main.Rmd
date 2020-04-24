@@ -1246,7 +1246,6 @@ fit_hier_NB_mos <-
   sampling(
     comp_hier_NB_mos,
     data = standata_hier_long,
-    chains = 4,
     cores = 4,
     control = list(adapt_delta = 0.95)
   )
@@ -1268,6 +1267,7 @@ ppc_dens_overlay(
 ```
 
 ```{r}
+y_rep <- as.matrix(fit_hier_NB_mos, pars = "y_rep")
 select_vec <- which(standata_hier_long$mo_idx %in% 1:12)
 ppc_stat_grouped(
   y = standata_hier_long$complaints[select_vec],
@@ -1336,11 +1336,13 @@ comp_forecast <- stan_model('stan_programs/hier_NB_regression_ncp_slopes_mos_pre
 ```
 
 ```{r run-NB-hier-forecast}
+standata_hier_long$M_forward <- 12
+
 forecast_model <- sampling(
   comp_forecast,
   data = standata_hier_long,
   cores = 4,
-  control = list(adapt_delta = 0.9)
+  control = list(adapt_delta = 0.95)
 )
 ```
 

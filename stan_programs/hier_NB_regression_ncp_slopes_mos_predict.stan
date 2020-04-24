@@ -101,7 +101,6 @@ model {
   */
    vector[N] eta = mu[building_idx] + kappa[building_idx] .* traps + mo[mo_idx] + log_sq_foot;
    complaints ~ neg_binomial_2_log(eta, phi);
-   
   } // end local block/scope
   
 }
@@ -109,18 +108,16 @@ generated quantities {
   // we'll predict number of complaints for each building
   // at each hypothetical number of traps for M_forward months in the future
   int y_pred[J,N_hypo_traps];
+  vector[M_forward] mo_forward;
+  // first future month depends on last observed month
+  mo_forward[1] = normal_rng(rho * mo[M], sigma_mo); 
+  for (m in 2:M_forward) {
+    mo_forward[m] = normal_rng(rho * mo_forward[m-1], sigma_mo); 
+  }
   
   for (j in 1:J) { // loop over buildings
     for (i in 1:N_hypo_traps) {  // loop over the different numbers of traps
       int y_pred_by_month[M_forward];
-      vector[M_forward] mo_forward;
-      
-      // first future month depends on last observed month
-      mo_forward[1] = normal_rng(rho * mo[M], sigma_mo); 
-      for (m in 2:M_forward) {
-        mo_forward[m] = normal_rng(rho * mo_forward[m-1], sigma_mo); 
-      }
-        
       for (m in 1:M_forward) {
         real eta = mu[j] + kappa[j] * hypo_traps[i] 
                    + mo_forward[m] + log_sq_foot_pred[j];
