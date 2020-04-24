@@ -22,5 +22,10 @@ model = stan_model("your_model.stan")
 #  1. A data block for your input
 #  2. A parameters block to define the things you want to estimate
 #  3. A model block to define your likelihood and prior
+#
 
+# The sampling statement will run the fit and print a summary.
+#
+# We will give you the output we got from a model with no prior afterwards
+#  to check yourself
 sampling(model, data = standata_simple)
