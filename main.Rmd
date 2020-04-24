@@ -1110,9 +1110,12 @@ ppc_stat(
 ## Time varying effects and structured priors
 
 We haven't looked at how cockroach complaints change over time. Let's look
-at whether there's any pattern over time.
+at plots over time. Each panel below is a month and we can see that we're
+making basically the same predictions for each month since we haven't
+encoding any time structure into the model:
 
 ```{r ppc-group_max-hier-slopes-mean-by-mo}
+y_rep <- as.matrix(fit_hier_NB_slopes, pars = "y_rep")
 select_vec <- which(standata_hier_long$mo_idx %in% 1:12)
 ppc_stat_grouped(
   y = standata_hier_long$complaints[select_vec],
@@ -1166,9 +1169,17 @@ Then we can use a beta prior on $\rho_\text{raw}$ to push our estimate of $\rho$
 
 For example a `rho_raw ~ beta(10, 5)` prior would look like:
 
-```{r, fig.width = 3, fig.height = 3}
+```{r}
 suppressPackageStartupMessages(library(ggformula))
 gf_dist("beta", shape1 = 10, shape2 = 5) + xlab("rho_raw") 
+```
+
+
+```{r}
+rho_raw <- rbeta(1000, 10, 5)
+rho <- 2 * rho_raw - 1
+rho_priors <- cbind(rho_raw, rho)
+mcmc_hist(rho_priors, facet_args = list(nrow = 2)) + xlim(-1, 1)
 ```
 
 One further wrinkle is that we have a prior for $\texttt{mo}_t$ that depends on
