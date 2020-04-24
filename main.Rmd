@@ -954,8 +954,8 @@ ppc_dens_overlay(standata_hier$complaints, y_rep[1:200,])
 
 This looks quite nice. 
 
-If we've captured the building-level means well, then the
-posterior distribution of means by building should match well with the observed
+If we've captured the building-level means well, then the distribution of
+predicted means by building should match well with the observed
 means of the quantity of building complaints by month.
 
 ```{r ppc-group_means-hier}
@@ -969,19 +969,8 @@ ppc_stat_grouped(
 ```
 
 We weren't doing terribly with the building-specific means before, but now they
-are all estimated a bit better by the model. The model is also able to do a
-decent job estimating within-building variability and, for the most part, 
-the probability of zero complaints:
-
-```{r}
-ppc_stat_grouped(
-  y = standata_hier$complaints,
-  yrep = y_rep,
-  group = pest_data$building_id,
-  stat = 'sd',
-  binwidth = 0.5
-)
-```
+are all estimated much more precisely. The model is also able to do a
+decent job estimating the probability of zero complaints:
 
 ```{r}
 prop_zero <- function(x) mean(x == 0)
@@ -998,7 +987,7 @@ ppc_stat_grouped(
   yrep = y_rep,
   group = pest_data$building_id,
   stat = prop_zero,
-  binwidth = 0.05
+  binwidth = 0.1
 )
 ```
 
