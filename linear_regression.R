@@ -8,8 +8,6 @@ standata_simple <- list(
   traps = pest_data$traps
 )
 
-model = stan_model("your_model.stan")
-
 # Write a model in 'your_model.stan'. Use the Rstudio stan template in
 #  File -> New File -> Stan File
 #
@@ -29,4 +27,5 @@ model = stan_model("your_model.stan")
 #
 # We will give you the output we got from a model with no prior afterwards
 #  to check yourself
-sampling(model, data = standata_simple)
+model <- stan_model("your_model.stan") # compile
+sampling(model, data = standata_simple) # sample
