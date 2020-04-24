@@ -45,11 +45,11 @@ transformed parameters {
   real phi = inv(inv_phi);
   
   // non-centered parameterization of building-specific intercepts and slopes
-  vector[J] mu = alpha + building_data * zeta + sigma_mu * mu_raw;
-  vector[J] kappa = beta + building_data * gamma + sigma_kappa * kappa_raw;
+  vector[J] mu = (alpha + building_data * zeta) + sigma_mu * mu_raw;
+  vector[J] kappa = (beta + building_data * gamma) + sigma_kappa * kappa_raw;
+  vector[N] eta = mu[building_idx] + kappa[building_idx] .* traps  + log_sq_foot;
 }
 model {
-  vector[N] eta = mu[building_idx] + kappa[building_idx] .* traps  + log_sq_foot;
   complaints ~ neg_binomial_2_log(eta, phi);
   
   /* it doesn't matter if the likelihood appears before or after the priors
@@ -58,7 +58,7 @@ model {
 
   inv_phi ~ normal(0, 1);
   
-  kappa_raw ~ normal(0,1) ;
+  kappa_raw ~ normal(0,1);
   sigma_kappa ~ normal(0, 1);
   beta ~ normal(-0.25, 0.5);
   gamma ~ normal(0, 1);
@@ -71,10 +71,6 @@ model {
 generated quantities {
   int y_rep[N];
   for (n in 1:N) {
-    real eta_n = 
-      mu[building_idx[n]] + kappa[building_idx[n]] * traps[n] + 
-        log_sq_foot[n];
-      
-    y_rep[n] = neg_binomial_2_log_safe_rng(eta_n, phi);
+    y_rep[n] = neg_binomial_2_log_safe_rng(eta[n], phi);
   }
 }

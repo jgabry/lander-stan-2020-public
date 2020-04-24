@@ -909,7 +909,8 @@ Fit the model to the data.
 fit_hier_NB_ncp <- sampling(comp_hier_NB_ncp, 
                             data = standata_hier, 
                             refresh = 1000,
-                            cores = 4)
+                            cores = 4, 
+                            seed = 123) # demonstrating setting seed
 ```
 
 You should have no divergences (or only a few) this time and much improved
