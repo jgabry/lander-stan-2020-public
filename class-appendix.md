@@ -55,7 +55,7 @@
 * Case study: [A Bayesian Approach to Sequential A/B Testing: Multi-Armed Contextual Bandits in Stan" by Bob Carpenter](https://htmlpreview.github.io/?https://github.com/stan-dev/example-models/blob/master/knitr/bandits/stan-bandits.html) (code)[https://github.com/stan-dev/example-models/tree/master/knitr/bandits)
 
 ### Causal inference in Stan: 
-* [Lee, Feller, Rabe-Hesketh case study](https://mc-stan.org/users/documentation/case-studies/model-based_causal_inference_for_RCT.html)
+* "Model-based Inference for Causal Effects in Completely Randomized Experments", Joon-Ho Lee et al. [link](https://mc-stan.org/users/documentation/case-studies/model-based_causal_inference_for_RCT.html)
 
 ### SEM Modeling in Stan
 * "Adapting Structural Equation Modeling Fit indices into Bayesian SEM, Psychological Methods", Mauricio Garnier-Villarreal et al., [discourse](https://discourse.mc-stan.org/t/new-paper-adapting-structural-equation-modeling-fit-indices-into-bayesian-sem-psychological-methods/10262) [paper](https://www.ncbi.nlm.nih.gov/pubmed/31180693)
@@ -96,9 +96,8 @@
 * Aki’s Cross Validation FAQ [https://avehtari.github.io/modelselection/CV-FAQ.html](https://avehtari.github.io/modelselection/CV-FAQ.html)
 
 ### Model averaging with Stan
-* Stacking is the new model averaging: 
-  * [paper](https://projecteuclid.org/euclid.ba/1516093227)
-  * [loo package vignette](https://cran.r-project.org/web/packages/loo/vignettes/loo2-weights.html)
+* "Using Stacking to Average Bayesian Predictive Distributions (with Discussion)", Yuling Yao et al., [link](https://projecteuclid.org/euclid.ba/1516093227)
+* "Bayesian Stacking and Pseudo-BMA weights using the loo package", Aki Vehtari and Jonah Gabry, [link](https://cran.r-project.org/web/packages/loo/vignettes/loo2-weights.html)
 
 ### Folk theorem
 * Andrew's blog post: [The folk theorem of statistical computing](https://statmodeling.stat.columbia.edu/2008/05/13/the_folk_theore/)
