@@ -2,7 +2,7 @@
 
 ### Books
 * "Bayesian Data Analysis 3rd", Andrew Gelman et al., [book](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf), [webpage](http://www.stat.columbia.edu/~gelman/book/)
-* "Statistical Rethinking", Richard McElreath, [webpage](https://xcelab.net/rm/statistical-rethinking/) [youtube](https://www.youtube.com/watch?v=4WVelCswXo4&list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI)
+* "Statistical Rethinking", Richard McElreath, [webpage](https://xcelab.net/rm/statistical-rethinking/), [youtube](https://www.youtube.com/watch?v=4WVelCswXo4&list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI)
 
 ### Other Stan tutorials
 * Good first case study: [Hierarchical partial pooling for repeated binary trials](https://mc-stan.org/users/documentation/case-studies/pool-binary-trials.html)
@@ -38,15 +38,11 @@
  * Some reference on imputation? Imputation is kindof a hack as I understand it though (TODO: Jonah delete if you can't find anything, Rob didn't have a link)
 
 ### Zero-inflated Poisson models in Stan
-* [manual chapter](https://mc-stan.org/docs/2_23/stan-users-guide/zero-inflated-section.html)
+* "Zero-Inflated and Hurdle Models", Stan manual, [link](https://mc-stan.org/docs/2_23/stan-users-guide/zero-inflated-section.html)
 
 ### Truncated distributions in Stan
 * Explicit support for univariate truncated distributions, [manual chapter](https://mc-stan.org/docs/2_23/stan-users-guide/truncated-data-section.html)
 * Truncated multivariate normal, [Stan forum post, link to paper+code](https://discourse.mc-stan.org/t/how-to-truncate-a-multivariate-normal-distribution-sidebar-how-to-access-old-stan-mailing-lists-posts/9280/2)
-
-### PCA in Stan
-* [Paper](https://arxiv.org/abs/1710.09443)
-* [code](https://github.com/pourzanj/TfRotationPca/tree/master/Stan)
 
 ## Applications
 
@@ -86,13 +82,11 @@
 * `reduce_sum` function [link](https://mc-stan.org/users/documentation/case-studies/reduce_sum_tutorial.html)
 
 ### Details on vectors, matrices and arrays in Stan
-* [manual chapter](https://mc-stan.org/docs/2_22/stan-users-guide/matrices-vectors-and-arrays.html)
-
-### Multiplication/addition in Stan for different types
-* [matrix/vector multiplication vs. elementwise multiplication]( https://mc-stan.org/docs/2_23/reference-manual/arithmetic-expressions-section.html)
+* "Matrices, Vectors, and Arrays", Stan manual, [link](https://mc-stan.org/docs/2_22/stan-users-guide/basic-motivation.html)
+* Matrix multiplication vs. elementwise multiplication, Stan manual, [link](https://mc-stan.org/docs/2_23/reference-manual/arithmetic-expressions-section.html)
 
 ### Conditions for reproducibility in Stan
-* [manual chapter](https://mc-stan.org/docs/2_23/reference-manual/reproducibility-chapter.html)
+* "Reproducibility", Stan manual, [link](https://mc-stan.org/docs/2_23/reference-manual/reproducibility-chapter.html)
 
 ## Multiple models
 
@@ -131,10 +125,11 @@ and Stan", [link](http://www.stat.columbia.edu/~gelman/research/published/stan_v
 * Monte Carlo algorithm animations, Chi Feng, [link](https://chi-feng.github.io/mcmc-demo/app.html)
 
 ### Metropolis algorithm: 
-* page 279 of [BDA3](https://statisticalsupportandresearch.files.wordpress.com/2017/11/bayesian_data_analysis.pdf)
+* Page 279 of "Bayesian Data Analysis", Andrew Gelman et al., [link](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf)
 
-### Why data subsampling won't work with HMC
-* [Betancourt paper](https://arxiv.org/pdf/1502.01510.pdf)
+### Data subsampling
+* "The Fundamental Incompatibility of
+Hamiltonian Monte Carlo and Data Subsampling", Michael Betancourt, [link](https://arxiv.org/abs/1502.01510)
 
 ### Variational Inference
 * The variational inference algorithm in Stan is still in development. There are various papers and commentaries on it
