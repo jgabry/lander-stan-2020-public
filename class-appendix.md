@@ -44,6 +44,10 @@
 * Explicit support for univariate truncated distributions, [manual chapter](https://mc-stan.org/docs/2_23/stan-users-guide/truncated-data-section.html)
 * Truncated multivariate normal, [Stan forum post, link to paper+code](https://discourse.mc-stan.org/t/how-to-truncate-a-multivariate-normal-distribution-sidebar-how-to-access-old-stan-mailing-lists-posts/9280/2)
 
+### Parallelization in Stan
+* Single computer parallelization via `reduce_sum` (easier), [tutorial](https://mc-stan.org/users/documentation/case-studies/reduce_sum_tutorial.html), [user's guide](https://mc-stan.org/docs/2_23/stan-users-guide/reduce-sum.html), [functions reference](https://mc-stan.org/docs/2_23/functions-reference/functions-reduce.html)
+* Multiple computer parallelization via `map_rect` (harder), [tutorial](https://github.com/rmcelreath/cmdstan_map_rect_tutorial), [user's guide](https://mc-stan.org/docs/2_23/stan-users-guide/map-rect.html), [functions reference](https://mc-stan.org/docs/2_23/functions-reference/functions-map.html)
+
 ## Applications
 
 ### Multilevel regression and poststratification (MRP) in Stan
@@ -77,9 +81,6 @@
 ### Probabilistic meaning of Stan syntax:
 * What does `y ~ normal(mu, sigma);` mean?, "Sampling Statements", Stan Manual, [link](https://mc-stan.org/docs/2_23/reference-manual/sampling-statements-section.html)
 * How do constraints work `real<lower = 0.0> sigma;`?, "Constraint Transforms", Stan Manual, [link](https://mc-stan.org/docs/2_23/reference-manual/variable-transforms-chapter.html)
-
-### Single-machine parallel computation in Stan
-* `reduce_sum` function [link](https://mc-stan.org/users/documentation/case-studies/reduce_sum_tutorial.html)
 
 ### Details on vectors, matrices and arrays in Stan
 * "Matrices, Vectors, and Arrays", Stan manual, [link](https://mc-stan.org/docs/2_22/stan-users-guide/basic-motivation.html)
