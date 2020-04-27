@@ -1,4 +1,6 @@
-## General Resources
+## Resources
+
+These are links to resources related to questions asked during the workshop. Let us know if we forgot anything!
 
 ### Books
 * "Bayesian Data Analysis 3rd", Andrew Gelman et al., [book](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf), [webpage](http://www.stat.columbia.edu/~gelman/book/)
@@ -31,11 +33,9 @@
 * "Gaussian processes", Stan manual, [link](https://mc-stan.org/docs/2_23/stan-users-guide/gaussian-processes-chapter.html)
 
 ### Missing data
- * Relationship to MRP (TODO: Jonah delete if you don't have material to put here, Rob didn't know what to put here) 
  * [Relationship to causal inference](https://mc-stan.org/users/documentation/case-studies/model-based_causal_inference_for_RCT.html)
- * [Missing data that you just integrate out](https://mc-stan.org/docs/2_23/stan-users-guide/missing-data-and-partially-known-parameters.html)
+ * [Missing data techniques in the Stan manual](https://mc-stan.org/docs/2_23/stan-users-guide/missing-data-and-partially-known-parameters.html)
  * [More examples of integrating out parameters](https://jrnold.github.io/bugs-examples-in-stan/multivarmissing.html)
- * Some reference on imputation? Imputation is kindof a hack as I understand it though (TODO: Jonah delete if you can't find anything, Rob didn't have a link)
 
 ### Zero-inflated Poisson models in Stan
 * "Zero-Inflated and Hurdle Models", Stan manual, [link](https://mc-stan.org/docs/2_23/stan-users-guide/zero-inflated-section.html)
@@ -93,6 +93,7 @@
 
 ### Automated model comparison/model checking:
 * Approximate leave-one-out cross validation in Stan: [loo package vignette](https://mc-stan.org/loo/articles/loo2-example.html)
+* Writing Stan programs for use with the loo package: [loo package vignette](http://mc-stan.org/loo/articles/loo2-with-rstan.html)
 * Aki’s model selection webpage: [https://avehtari.github.io/modelselection/](https://avehtari.github.io/modelselection/)
 * Aki’s Cross Validation FAQ [https://avehtari.github.io/modelselection/CV-FAQ.html](https://avehtari.github.io/modelselection/CV-FAQ.html)
 
